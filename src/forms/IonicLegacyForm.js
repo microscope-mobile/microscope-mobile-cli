@@ -16,12 +16,7 @@ var IonicLegacyForm = Form.extend({
             type: 'list',
             name: 'starter',
             message: 'Choose your mobile starter kit !',
-            choices: [ 
-                {name: 'blank', value: 1 },
-                {name: 'sidemenu', value: 2 },
-                {name: 'tabs', value: 3 },
-                {name: 'exit', value: 0 }
-            ]
+            choices: [ 'blank', 'tabs', 'sidemenu', 'maps', 'salesforce', 'tests', 'complex-list']
         },{
             type: 'input',
             name: 'package',
