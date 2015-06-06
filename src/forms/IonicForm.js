@@ -1,6 +1,13 @@
 // Imports
 var path       = require('path');
 var Form       = require('microscope-console').Form;
+var downloader = require('../services/downloader');
+var fs         = require('fs');
+
+var URLS = {
+    blank: 'https://github.com/microscope-mobile/microscope-mobile-blank/archive/master.zip',
+    sidemenu: 'https://github.com/microscope-mobile/microscope-mobile-sidemenu/archive/master.zip'
+};
 
 /**
  * IonicForm class
@@ -21,6 +28,10 @@ var IonicForm = Form.extend({
             ]
         },{
             type: 'input',
+            name: 'solution',
+            message: 'Ok ! What is your solution name ?'
+        },{
+            type: 'input',
             name: 'project',
             message: 'Ok ! What is your project name ?'
         }];
@@ -29,16 +40,28 @@ var IonicForm = Form.extend({
     },
 
     response: function (answer) {
+        var self = this;
+
         console.log('\n');
-        var projectPath = path.join(process.cwd(), answer.project);
+        var projectPath = path.join(process.cwd(), answer.solution);
 
         switch(answer.starter){
             case 1:
-                console.log('... downloading Angular starter kit ...');
+                console.log('... downloading blank starter kit ...');
+                downloader.fetchArchive(projectPath, URLS.blank).then(function () {
+                    fs.rename(projectPath + '/microscope-mobile-blank-master', projectPath + '/' + answer.project,  function () {
+                       console.log('download complete !!'); 
+                    });
+                });
             break;
 
             case 2:
-                console.log('... downloading Backbone-React starter kit ...');
+                console.log('... downloading sidemenu starter kit ...');
+                downloader.fetchArchive(projectPath, URLS.sidemenu).then(function () {
+                    fs.rename(projectPath + '/microscope-mobile-sidemenu-master', projectPath + '/' + answer.project,  function () {
+                       console.log('download complete !!'); 
+                    });
+                });
             break;
         }
 
