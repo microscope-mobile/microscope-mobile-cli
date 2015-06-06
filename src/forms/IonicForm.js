@@ -21,7 +21,7 @@ var IonicForm = Form.extend({
             type: 'list',
             name: 'starter',
             message: 'Choose your mobile starter kit !',
-            choices: [ 
+            choices: [
                 {name: 'blank', value: 1 },
                 {name: 'sidemenu', value: 2 },
                 {name: 'exit', value: 0 }
