@@ -56,10 +56,10 @@ exports.fetchArchive = function (targetPath, archiveUrl) {
     }
     if (res.statusCode !== 200) {
       if (res.statusCode === 404 || res.statusCode === 406) {
-        console.error('Not found:'.error.bold, archiveUrl, '(' + res.statusCode + ')');
-        console.error('Please verify the url and try again.'.error.bold);
+        console.error('Not found:', archiveUrl, '(' + res.statusCode + ')');
+        console.error('Please verify the url and try again.');
       } else {
-        console.error('Invalid response status:'.error.bold, archiveUrl, '(' + res.statusCode + ')');
+        console.error('Invalid response status:', archiveUrl, '(' + res.statusCode + ')');
       }
       q.reject(res);
       return;
