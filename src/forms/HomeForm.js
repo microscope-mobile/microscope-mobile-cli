@@ -45,7 +45,6 @@ var HomeForm = Form.extend({
                 new PluginForm();
                 break;
                 
-
             case 4:
                 new FreeForm();
                 break;
