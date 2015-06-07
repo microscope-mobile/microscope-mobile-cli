@@ -4,7 +4,7 @@ var downloader = require('../services/downloader');
 var path = require('path');
 
 /**
- * HomeForm class
+ * FreeForm class
  */
 var FreeForm = Form.extend({
 

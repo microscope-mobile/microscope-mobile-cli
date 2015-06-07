@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var IonicForm = require('./forms/IonicForm');
 var HomeForm = require('./forms/HomeForm');
 
