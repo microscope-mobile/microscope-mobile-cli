@@ -3,7 +3,6 @@ var Form = require('microscope-console').Form;
 var IonicForm = require('./IonicForm');
 var IonicLegacyForm = require('./IonicLegacyForm');
 var FreeForm = require('./FreeForm');
-var PluginForm = require('./PluginForm');
 
 /**
  * HomeForm class
@@ -20,8 +19,7 @@ var HomeForm = Form.extend({
             choices: [
                 { name: 'NPM / Browserify ionic', value: 1 },
                 { name: 'Official ionic starter-kit', value: 2 },
-                { name: 'Plugins cordova', value: 3 },
-                { name: 'Free', value: 4 },
+                { name: 'Free', value: 3 },
                 { name: 'exit', value: 0 }
             ]
         }];
@@ -42,10 +40,6 @@ var HomeForm = Form.extend({
                 break;
                 
             case 3:
-                new PluginForm();
-                break;
-                
-            case 4:
                 new FreeForm();
                 break;
         }
