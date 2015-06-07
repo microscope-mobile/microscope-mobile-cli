@@ -7,7 +7,8 @@ var ionicAppLib = require('ionic-app-lib');
 var URLS = {
     blank: 'https://github.com/microscope-mobile/microscope-mobile-blank/archive/master.zip',
     sidemenu: 'https://github.com/microscope-mobile/microscope-mobile-sidemenu/archive/master.zip',
-    tabs: 'https://github.com/microscope-mobile/microscope-mobile-tabs/archive/master.zip'
+    tabs: 'https://github.com/microscope-mobile/microscope-mobile-tabs/archive/master.zip',
+    maps : 'https://github.com/microscope-mobile/microscope-mobile-maps/archive/master.zip'
 };
 
 /**
@@ -26,6 +27,7 @@ var IonicForm = Form.extend({
                 { name: 'blank', value: 1 },
                 { name: 'sidemenu', value: 2 },
                 { name: 'tabs', value: 3 },
+                { name: 'maps', value: 4 },
                 { name: 'exit', value: 0 }
             ]
         }, {
@@ -70,6 +72,15 @@ var IonicForm = Form.extend({
                 console.log('... downloading tabs starter kit ...');
                 ionicAppLib.utils.fetchArchive(projectPath, URLS.tabs).then(function () {
                     fs.rename(projectPath + '/microscope-mobile-tabs-master', projectPath + '/' + answer.project, function () {
+                        console.log('download complete !!');
+                    });
+                });
+                break;
+                
+            case 4:
+                console.log('... downloading maps starter kit ...');
+                ionicAppLib.utils.fetchArchive(projectPath, URLS.maps).then(function () {
+                    fs.rename(projectPath + '/microscope-mobile-maps-master', projectPath + '/' + answer.project, function () {
                         console.log('download complete !!');
                     });
                 });
