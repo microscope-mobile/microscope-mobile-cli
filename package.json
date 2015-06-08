@@ -1,7 +1,7 @@
 {
   "name": "microscope-mobile-cli",
-  "version": "0.1.0",
-  "description": "CLI for microscope-mobile project template",
+  "version": "0.8.0",
+  "description": "CLI for microscope-mobile project templates",
   "bin": "./src/index.js",
   "engines": {
     "node": "*"
@@ -11,7 +11,9 @@
     "url": "https://github.com/microscope-mobile/microscope-mobile-cli.git"
   },
   "keywords": [
-    "CLI"
+    "CLI",
+    "mobile",
+    "generator"
   ],
   "author": "benjamin heintz",
   "license": "MIT",
