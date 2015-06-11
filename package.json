@@ -2,7 +2,7 @@
   "name": "microscope-mobile-cli",
   "version": "0.8.0",
   "description": "CLI for microscope-mobile project templates",
-  "bin": "./src/index.js",
+  "bin": "./bin/microscope-mobile",
   "engines": {
     "node": "*"
   },
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/microscope-mobile/microscope-mobile-cli",
   "dependencies": {
+    "commander": "^2.8.1",
     "ionic-app-lib": "^0.1.0",
     "microscope-console": "^0.9.0"
   }
