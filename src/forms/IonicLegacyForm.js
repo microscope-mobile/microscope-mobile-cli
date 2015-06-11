@@ -6,6 +6,8 @@ var start = ionicAppLib.start;
 
 /**
  * IonicForm class
+ * FOR DEVELOPMENT - WILL BE REMOVE BEFORE RELEASE ON NPM
+ * USE AWESOME OFFICIAL IONIC CLI INSTEAD
  */
 var IonicLegacyForm = Form.extend({
 

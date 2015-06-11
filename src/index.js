@@ -11,13 +11,6 @@ program
 	});
   
 program
-	.command('ionitron <project> <name>')
-	.description('official ionic templates')
-	.action(function(project, name){
-		console.log("\n official ionic not implemented yet");
-	});
-  
-program
 	.command('winjs <project> <name>')
 	.description('WinJS templates')
 	.action(function(project, name){
@@ -44,7 +37,7 @@ function renderForm() {
 		'=================================\n',
 		'        MICROSCOPE-MOBILE        \n',
 		'                                 \n',
-		'    awesome mobile generator     \n',
+		'     mobile project generator    \n',
 		'================================='
 	].join('');
 	console.log(logo);

@@ -1,6 +1,6 @@
 {
-  "name": "microscope-mobile-cli",
-  "version": "0.8.0",
+  "name": "microscope-mobile",
+  "version": "0.5.0",
   "description": "CLI for microscope-mobile project templates",
   "bin": "./bin/microscope-mobile",
   "engines": {
