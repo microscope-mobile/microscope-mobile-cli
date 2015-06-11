@@ -12,6 +12,7 @@ clone repository
 install as global package
 
 	cd microscope-mobile-cli
+	npm install . -g
 	
 display prompt :
 
