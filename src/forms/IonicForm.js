@@ -3,6 +3,7 @@ var path = require('path');
 var Form = require('microscope-console').Form;
 var URLS = require('../project.json');
 var download = require('../services/downloader').download;
+var jeditor = require("gulp-json-editor");
 
 /**
  * IonicForm class
@@ -57,8 +58,14 @@ var IonicForm = Form.extend({
                 break;
         }
         
+        var self = this;
         var projectPath = path.join(process.cwd(), answer.project);
         download(url, projectPath, function () {
+            self.src('./'+answer.project+'/package.json')
+              .pipe(jeditor({
+                'name': answer.project
+              }))
+              .pipe(self.dest("./"+ answer.project));
             console.log('download completed');
         });
     }
