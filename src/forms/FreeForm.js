@@ -1,7 +1,7 @@
 // Imports
 var Form = require('microscope-console').Form;
 var path = require('path');
-var ionicAppLib = require('ionic-app-lib');
+var download = require('../services/downloader').download;
 
 /**
  * FreeForm class
@@ -9,30 +9,23 @@ var ionicAppLib = require('ionic-app-lib');
 var FreeForm = Form.extend({
 
     banner: 'FREE PROJECT',
-
-    initialize: function () {
-        this.model = [{
+    model: [{
             type: 'input',
             name: 'project',
             message: 'Ok ! What is your project name ?'
-        }, {
-                type: 'input',
-                name: 'url',
-                message: 'Enter project template zip url !'
-            }];
-
-        this.render();
-    },
+        },{
+            type: 'input',
+            name: 'url',
+            message: 'Enter project template zip url !'
+    }],
 
     response: function (answer) {
         console.log('\n');
         
         var projectPath = path.join(process.cwd(), answer.project);
-        ionicAppLib.utils.fetchArchive(projectPath, answer.url).then(function () {
+        download(answer.url, projectPath, function () {
             console.log('download complete !!');
         });
-
-        console.log('\n');
     }
 });
 

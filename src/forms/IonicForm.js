@@ -1,53 +1,32 @@
 // Imports
 var path = require('path');
 var Form = require('microscope-console').Form;
-var fs = require('fs');
-var ionicAppLib = require('ionic-app-lib');
-
-var URLS = {
-    blank: 'https://github.com/microscope-mobile/microscope-mobile-blank/archive/master.zip',
-    sidemenu: 'https://github.com/microscope-mobile/microscope-mobile-sidemenu/archive/master.zip',
-    tabs: 'https://github.com/microscope-mobile/microscope-mobile-tabs/archive/master.zip',
-    maps: 'https://github.com/microscope-mobile/microscope-mobile-maps/archive/master.zip',
-    firebase: 'https://github.com/microscope-mobile/microscope-mobile-firebase/archive/master.zip'
-};
+var URLS = require('../project.json');
+var download = require('../services/downloader').download;
 
 /**
  * IonicForm class
  */
 var IonicForm = Form.extend({
 
-    banner: 'IONIC NPM workflow',
-
-    initialize: function () {
-        this.model = [{
-            type: 'list',
-            name: 'starter',
-            message: 'Choose your mobile starter kit !',
-            choices: [
-                { name: 'blank', value: 1 },
-                { name: 'sidemenu', value: 2 },
-                { name: 'tabs', value: 3 },
-                { name: 'maps', value: 4 },
-                { name: 'firebase', value: 5 }
-            ]
-        }, {
-                type: 'input',
-                name: 'solution',
-                message: 'Ok ! What is your solution name ?'
-            }, {
-                type: 'input',
-                name: 'project',
-                message: 'Ok ! What is your project name ?'
-            }];
-
-        this.render();
-    },
+    banner: 'Ionic framework',
+    model: [{
+        type: 'list',
+        name: 'starter',
+        message: 'Choose your mobile starter kit !',
+        choices: [
+            { name: 'blank', value: 1 },
+            { name: 'sidemenu', value: 2 },
+            { name: 'tabs', value: 3 },
+            { name: 'maps', value: 4 },
+            { name: 'firebase', value: 5 }
+        ]},{
+            type: 'input',
+            name: 'project',
+            message: 'Ok ! What is your project name ?'
+    }],
 
     response: function (answer) {
-        console.log('\n');
-
-        var projectPath = path.join(process.cwd(), answer.solution);
         var name = '';
         var url = '';
 
@@ -77,21 +56,10 @@ var IonicForm = Form.extend({
                 url = URLS.firebase;
                 break;
         }
-
-        this.download(name, answer.project, projectPath, url);
-
-        console.log('\n');
-    },
-    
-    /**
-     * download zip
-     */
-    download: function (templateName, projectName, projectPath, url) {
-        console.log('... downloading ' + templateName + ' starter kit ...');
-        ionicAppLib.utils.fetchArchive(projectPath, url).then(function () {
-            fs.rename(projectPath + '/microscope-mobile-' + templateName + '-master', projectPath + '/' + projectName, function () {
-                console.log('download complete !!');
-            });
+        
+        var projectPath = path.join(process.cwd(), answer.project);
+        download(url, projectPath, function () {
+            console.log('download completed');
         });
     }
 });

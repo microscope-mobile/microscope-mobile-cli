@@ -1,7 +1,6 @@
 // Imports
 var Form = require('microscope-console').Form;
 var IonicForm = require('./IonicForm');
-var IonicLegacyForm = require('./IonicLegacyForm');
 var FreeForm = require('./FreeForm');
 
 /**
@@ -10,41 +9,30 @@ var FreeForm = require('./FreeForm');
 var HomeForm = Form.extend({
 
     banner: 'HOME',
-
-    initialize: function () {
-        this.model = [{
-            type: 'list',
-            name: 'kind',
-            message: 'Choose your kind starter kit !',
-            choices: [
-                { name: 'NPM / Browserify ionic', value: 1 },
-                { name: 'Official ionic starter-kit', value: 2 },
-                { name: 'Free', value: 3 },
-                { name: 'exit', value: 0 }
-            ]
-        }];
-
-        this.render();
-    },
+    model: [{
+        type: 'list',
+        name: 'kind',
+        message: 'Choose your kind starter kit !',
+        choices: [
+            { name: 'Ionic', value: 1 },
+            { name: 'WinJS', value: 2 },
+            { name: 'Free', value: 3 },
+            { name: 'exit', value: 0 }
+        ]
+    }],
 
     response: function (answer) {
-        console.log('\n');
-
         switch (answer.kind) {
             case 1:
-                new IonicForm()
+                new IonicForm();
                 break;
-
             case 2:
-                new IonicLegacyForm();
+                console.log('not implemented yet');
                 break;
-                
             case 3:
                 new FreeForm();
                 break;
         }
-
-        console.log('\n');
     }
 });
 

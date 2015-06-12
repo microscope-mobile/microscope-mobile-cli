@@ -1,22 +1,33 @@
-#!/usr/bin/env node
-
+// imports
 var program = require('commander');
+var path = require('path');
 var HomeForm = require('./forms/HomeForm');
+var download = require('./services/downloader').download;
 
 program
-	.command('ionic <project> <name>')
-	.description('microscope-mobile ionic templates')
+	.command('Ionic <project> <name>')
+	.description('ionic templates')
 	.action(function(project, name){
-		console.log("\n microscope-mobile ionic not implemented yet");
+		console.log("\n ionic not implemented yet");
 	});
   
 program
-	.command('winjs <project> <name>')
+	.command('WinJS <project> <name>')
 	.description('WinJS templates')
 	.action(function(project, name){
 		console.log("\n WinJS not implemented yet");
 	});
 
+program
+	.command('free <url> <name>')
+	.description('download github project from url')
+	.action(function (url, name) {
+		var projectPath = path.join(process.cwd(), name);
+		download(url, projectPath, function () {
+			console.log('download completed');
+		});
+	});
+	
 program
 	.command('tool')
 	.description('display template prompt')
