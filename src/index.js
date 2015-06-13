@@ -1,23 +1,38 @@
 // imports
 var program = require('commander');
 var path = require('path');
+var _ = require('lodash');
 var HomeForm = require('./forms/HomeForm');
 var download = require('./services/downloader').download;
+var URLS = require('./project.json');
 
+// ionic project command
 program
-	.command('Ionic <project> <name>')
-	.description('ionic templates')
-	.action(function(project, name){
-		console.log("\n ionic not implemented yet");
-	});
-  
+	.command('ionic <project> <name>')
+	.description('Ionic templates')
+	.action(function (project, name) {
+		var projectPath = path.join(process.cwd(), name);
+		var url = _.get(URLS, project);
+		
+		if(!url) {
+			console.log('no project template ' + project);
+			return;
+		}
+		
+		download(url, projectPath, function () {
+			console.log('download completed');
+		});
+});
+
+// winjs project command
 program
-	.command('WinJS <project> <name>')
+	.command('winjs <project> <name>')
 	.description('WinJS templates')
-	.action(function(project, name){
-		console.log("\n WinJS not implemented yet");
-	});
+	.action(function (project, name) {
+	console.log("\n WinJS not implemented yet");
+});
 
+// free project command
 program
 	.command('free <url> <name>')
 	.description('download github project from url')
@@ -26,13 +41,14 @@ program
 		download(url, projectPath, function () {
 			console.log('download completed');
 		});
-	});
-	
+});
+
+// tool command
 program
 	.command('tool')
 	.description('display template prompt')
 	.action(renderForm);
-  
+
 if (!process.argv.slice(2).length) {
 	renderForm();
 }
