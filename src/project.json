@@ -1,7 +1,8 @@
 {
-    "blank": "https://github.com/microscope-mobile/microscope-mobile-blank",
-    "sidemenu": "https://github.com/microscope-mobile/microscope-mobile-sidemenu",
-    "tabs": "https://github.com/microscope-mobile/microscope-mobile-tabs",
-    "maps": "https://github.com/microscope-mobile/microscope-mobile-maps",
-    "firebase": "https://github.com/microscope-mobile/microscope-mobile-firebase"
+    "ionic_blank": "https://github.com/microscope-mobile/ionic-blank",
+    "ionic_sidemenu": "https://github.com/microscope-mobile/ionic-sidemenu",
+    "ionic_tabs": "https://github.com/microscope-mobile/ionic-tabs",
+    "ionic_maps": "https://github.com/microscope-mobile/ionic-maps",
+    "ionic_firebase": "https://github.com/microscope-mobile/ionic-firebase",
+    "winjs_navbar": "https://github.com/microscope-mobile/winjs-navbar"
 }

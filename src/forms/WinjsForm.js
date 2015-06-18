@@ -6,21 +6,17 @@ var download = require('../services/downloader').download;
 var jeditor = require("gulp-json-editor");
 
 /**
- * IonicForm class
+ * WinjsForm class
  */
-var IonicForm = Form.extend({
+var WinjsForm = Form.extend({
 
-    banner: 'Ionic framework',
+    banner: 'WinJS framework',
     model: [{
         type: 'list',
         name: 'starter',
         message: 'Choose your mobile starter kit !',
         choices: [
-            { name: 'blank', value: 1 },
-            { name: 'sidemenu', value: 2 },
-            { name: 'tabs', value: 3 },
-            { name: 'maps', value: 4 },
-            { name: 'firebase', value: 5 }
+            { name: 'navbar', value: 1 }
         ]},{
             type: 'input',
             name: 'project',
@@ -33,28 +29,8 @@ var IonicForm = Form.extend({
 
         switch (answer.starter) {
             case 1:
-                name = 'blank';
-                url = URLS.ionic_blank;
-                break;
-
-            case 2:
-                name = 'sidemenu';
-                url = URLS.ionic_sidemenu;
-                break;
-
-            case 3:
-                name = 'tabs';
-                url = URLS.ionic_tabs;
-                break;
-
-            case 4:
-                name = 'maps';
-                url = URLS.ionic_maps;
-                break;
-                
-            case 5:
-                name = 'firebase';
-                url = URLS.ionic_firebase;
+                name = 'navbar';
+                url = URLS.winjs_navbar;
                 break;
         }
         
@@ -71,4 +47,4 @@ var IonicForm = Form.extend({
     }
 });
 
-module.exports = IonicForm;
+module.exports = WinjsForm;

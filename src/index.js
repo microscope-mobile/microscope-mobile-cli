@@ -12,7 +12,7 @@ program
 	.description('Ionic templates')
 	.action(function (project, name) {
 		var projectPath = path.join(process.cwd(), name);
-		var url = _.get(URLS, project);
+		var url = _.get(URLS, 'ionic_'+project);
 		
 		if(!url) {
 			console.log('no project template ' + project);
@@ -29,7 +29,17 @@ program
 	.command('winjs <project> <name>')
 	.description('WinJS templates')
 	.action(function (project, name) {
-	console.log("\n WinJS not implemented yet");
+		var projectPath = path.join(process.cwd(), name);
+		var url = _.get(URLS, 'winjs_'+project);
+		
+		if(!url) {
+			console.log('no project template ' + project);
+			return;
+		}
+		
+		download(url, projectPath, function () {
+			console.log('download completed');
+		});
 });
 
 // free project command

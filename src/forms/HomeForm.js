@@ -2,6 +2,7 @@
 var Form = require('microscope-console').Form;
 var IonicForm = require('./IonicForm');
 var FreeForm = require('./FreeForm');
+var WinjsForm = require('./WinjsForm');
 
 /**
  * HomeForm class
@@ -27,7 +28,7 @@ var HomeForm = Form.extend({
                 new IonicForm();
                 break;
             case 2:
-                console.log('not implemented yet');
+                new WinjsForm();
                 break;
             case 3:
                 new FreeForm();
