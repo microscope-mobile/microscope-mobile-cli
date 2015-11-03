@@ -74,13 +74,13 @@ var IonicForm = Form.extend({
                 'name': answer.project
               }))
               .pipe(self.dest("./"+ answer.project));        
-             //set name in config.xml (cordova)
-             self.src('./'+answer.project+'/config.xml')
-             .pipe(xeditor([
-                {path: '//xmlns:name', text: answer.project},
-                {path: '//xmlns:widget', attr: {'id': 'com.'+answer.project}}
-            ], 'http://www.w3.org/ns/widgets'))
-                .pipe(self.dest("./"+ answer.project));
+            //set name in config.xml (cordova)
+            self.src('./' + answer.project + '/config.xml')
+                .pipe(xeditor([
+                    { path: '//xmlns:name', text: answer.project },
+                    { path: '//xmlns:widget', attr: { 'id': 'com.' + answer.project } }
+                ], 'http://www.w3.org/ns/widgets'))
+                .pipe(self.dest("./" + answer.project));
  
             console.log('download completed');
         });
