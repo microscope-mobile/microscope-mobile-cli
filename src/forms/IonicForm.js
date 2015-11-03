@@ -4,6 +4,7 @@ var Form = require('microscope-console').Form;
 var URLS = require('../project.json');
 var download = require('../services/downloader').download;
 var jeditor = require("gulp-json-editor");
+var xeditor = require("gulp-xml-editor");
 
 /**
  * IonicForm class
@@ -61,11 +62,26 @@ var IonicForm = Form.extend({
         var self = this;
         var projectPath = path.join(process.cwd(), answer.project);
         download(url, projectPath, function () {
+            //set name in package.json
             self.src('./'+answer.project+'/package.json')
               .pipe(jeditor({
                 'name': answer.project
               }))
               .pipe(self.dest("./"+ answer.project));
+            //set name in ionic.project
+            self.src('./'+answer.project+'/ionic.project')
+              .pipe(jeditor({
+                'name': answer.project
+              }))
+              .pipe(self.dest("./"+ answer.project));        
+             //set name in config.xml (cordova)
+             self.src('./'+answer.project+'/config.xml')
+             .pipe(xeditor([
+                {path: '//xmlns:name', text: answer.project},
+                {path: '//xmlns:widget', attr: {'id': 'com.'+answer.project}}
+            ], 'http://www.w3.org/ns/widgets'))
+                .pipe(self.dest("./"+ answer.project));
+ 
             console.log('download completed');
         });
     }

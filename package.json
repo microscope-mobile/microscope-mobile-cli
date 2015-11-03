@@ -25,6 +25,7 @@
     "commander": "^2.8.1",
     "github-download": "^0.3.0",
     "gulp-json-editor": "^2.2.1",
+    "gulp-xml-editor": "^2.2.1",
     "lodash": "^3.9.3",
     "microscope-console": "^0.9.1"
   }
